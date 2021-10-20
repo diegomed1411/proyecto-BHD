@@ -5,7 +5,7 @@ def crear_reclamo(idReclamo, descripcion, idInmueble, idUnidad, idUsuario, idSer
     INSERT INTO RECLAMOS(ID_RECLAMO, DESCRIPCION, ID_INMUEBLE, ID_UNIDAD, ID_USUARIO, ID_SERVICIO, FECHA, ESTADO)
     VALUES('{idReclamo}', '{descripcion}', '{idInmueble}', '{idUnidad}', '{idUsuario}', '{idServicio}', '{fecha}', 'pendiente' )
     """
-"""holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"""
+
     bd = BaseDeDatos()
     bd.ejecutar_sql(crear_reclamo_sql)
 
