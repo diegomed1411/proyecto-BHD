@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url(./media/city-g0734409a1_1280.jpg);
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#contenedorPadre{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(./media/city-g0734409a1_1280.jpg);
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+}
+
+#contenedorHijo{
+    width: 1000px;
+    height: 900px;
+    margin: 35px;
+    background-color: #8AB6D6;
+
+}
+
+.columnaDerecha{
+    background-color: white;
+    height: 900px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 35px;
+}
+
+.columnaIzquierda{
+    background-color: #8AB6D6;
+    height: 900px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#icono {
+    margin-bottom: 50px;
+}
+
+form{
+    margin-bottom: 50px;
+}
+
+.presentacion {
+    padding: 50px;
+}
+
+.card img {
+    width: 287px;
+    height: 287px;
+}
+
+#accordionExample {
+    margin-top: 15px;
+}

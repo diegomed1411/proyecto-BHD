@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHD Solutions - Registro</title>
+    <link rel="stylesheet" href="./estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+</head>
+<body>
+<div id="contenedorPadre">
+    <div id="contenedorHijo" class="container">
+        <div class="row row-cols-2">
+          <div class="col columnaIzquierda">
+            <a href="./index.html">
+            <img id="icono" src="./media/icons8-building-64 (1).png" alt="icono edificio"></a>
+            <h1 class="presentacion">REGISTRO DE NUEVO USUARIO</h1>
+            <p class="presentacion">Considera que la activación del usuario depende de la aceptación por parte del administrador de la propiedad <br>Nota: todos los campos de este formulario son obligatorios</p>
+
+          </div>
+          <div class="col columnaDerecha">
+              <h2>INGRESE SUS DATOS</h2>
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" aria-describedby="nombre">
+              </div>
+              <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" aria-describedby="apellido">
+              </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                <label for="tipoDoc" class="form-label">Tipo de documento</label>
+                <select class="form-select" aria-label="Tipo de documento">
+                  <option selected>Seleccione tipo de documento</option>
+                  <option value="cedula">Cedula</option>
+                  <option value="pasaporte">Pasaporte</option>
+                </select>
+                </div>
+                <div class="mb-3">
+                  <label for="numeroDoc" class="form-label">Numero de Documento</label>
+                  <input type="text" class="form-control" id="numeroDoc" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="telefono" class="form-label">Telefono</label>
+                  <input type="text" class="form-control" id="telefono" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="inmueble" class="form-label">Inmueble</label>
+                  <select class="form-select" aria-label="Nombre de Inmueble">
+                    <option selected>Seleccione inmueble</option>
+                    <option value="inmueble">Edificio A</option>
+                  </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="unidad" class="form-label">Unidad</label>
+                    <select class="form-select" aria-label="Tipo de documento">
+                      <option selected>Seleccione unidad</option>
+                      <option value="cedula">A103</option>
+                    </select>
+                    </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+              </form>
+          </div>
+        </div>
+      </div>
+
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
+
+</body>
+</html>
