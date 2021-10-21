@@ -49,3 +49,22 @@ def borrar_usuario(id_usuario):
     bd.ejecutar_sql(obtener_usuarios_sql)
 
 
+def crear_sesion(id_usuario, dt_string):
+    crear_sesion_sql = f"""
+               INSERT INTO SESIONES(ID_USUARIO, FECHA_HORA)
+               VALUES ('{id_usuario}', '{dt_string}')
+           """
+    bd = BaseDeDatos()
+    return bd.ejecutar_sql(crear_sesion_sql, True)
+
+
+def obtener_sesion(id_sesion):
+    obtener_sesion_sql = f"""
+        SELECT ID, ID_USUARIO, FECHA_HORA FROM SESIONES WHERE ID = {id_sesion}
+    """
+    bd = BaseDeDatos()
+    return [{"id": registro[0],
+             "id_usuario": registro[1],
+             "fecha_hora": registro[2]}
+            for registro in bd.ejecutar_sql(obtener_sesion_sql)]
+

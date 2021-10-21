@@ -1,7 +1,7 @@
 import sqlite3
 
 class BaseDeDatos:
-    url_base_de_datos = 'BHD_Database12.db'
+    url_base_de_datos = 'BHD_Database13.db'
 
     def _crear_conexion(self):
         try:

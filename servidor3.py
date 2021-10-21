@@ -81,6 +81,20 @@ def crear_reclamo():
       return "el usuario ya existe", 412
     return 'OK', 200
 
+
+@app.route('/login', methods=['POST'])
+def login():
+    datos_usuario = request.get_json()
+    if 'email' not in datos_usuario:
+        return 'El email es requerido', 412
+    if 'clave' not in datos_usuario:
+        return 'La clave es requerida', 412
+    try:
+        id_sesion = autenticacion.login(datos_usuario['email'], datos_usuario['clave'])
+        return jsonify({"id_sesion": id_sesion})
+    except Exception:
+        return 'USUARIO NO ENCONTRADO', 404
+
 """
 @app.route('/reclamo/<id_reclamo>', methods=['PUT'])
 def modificar_reclamo(idReclamo):
