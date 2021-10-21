@@ -20,6 +20,9 @@ def modificar_usuario(id_usuario, datos_usuario):
     bd.ejecutar_sql(modificar_usuario_sql)
 
 
+
+
+
 def obtener_usuarios():
     obtener_usuarios_sql = f"""
         SELECT id, nombre, apellido, email, tipoDeDocumento, nuemeroDeDocumento, telefono, idunidad, idinmueble  
@@ -49,6 +52,25 @@ def borrar_usuario(id_usuario):
     bd.ejecutar_sql(obtener_usuarios_sql)
 
 
+def obtener_usuarios_por_email_clave(email, clave):
+    obtener_usuario_sql = f"""
+        SELECT id, nombre, apellido, email, tipoDeDocumento, nuemeroDeDocumento, telefono, idunidad, idinmueble  
+        FROM USUARIOS_RESIDENTES 
+        WHERE EMAIL = '{email}' and CLAVE = '{clave}'
+    """
+    bd = BaseDeDatos()
+    return [{"id": registro[0],
+             "nombre": registro[1],
+             "apellido": registro[2],
+             "email": registro[3],
+             "tipoDeDocumento": registro[4],
+             "nuemeroDeDocumento": registro[5],
+             "telefono": registro[6],
+             "idunidad": registro[8],
+             "idinmueble": registro[9]
+             } for registro in bd.ejecutar_sql(obtener_usuario_sql)]
+
+
 def crear_sesion(id_usuario, dt_string):
     crear_sesion_sql = f"""
                INSERT INTO SESIONES(ID_USUARIO, FECHA_HORA)
@@ -60,11 +82,15 @@ def crear_sesion(id_usuario, dt_string):
 
 def obtener_sesion(id_sesion):
     obtener_sesion_sql = f"""
-        SELECT ID, ID_USUARIO, FECHA_HORA FROM SESIONES WHERE ID = {id_sesion}
+        SELECT ID, ID_USUARIO, FECHA_HORA 
+        FROM SESIONES 
+        WHERE ID = {id_sesion}
     """
     bd = BaseDeDatos()
     return [{"id": registro[0],
              "id_usuario": registro[1],
              "fecha_hora": registro[2]}
             for registro in bd.ejecutar_sql(obtener_sesion_sql)]
+
+
 
