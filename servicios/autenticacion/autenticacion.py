@@ -5,6 +5,9 @@ from datos.modelos import usuarioResidente as modelo_usuario
 from datetime import datetime
 
 
+def _existe_usuario(email, clave):
+    usuarios = modelo_usuario.obtener_usuarios_por_email_clave(email, clave)
+    return not len(usuarios) == 0
 
 
 def _crear_sesion(id_usuario):
@@ -14,9 +17,8 @@ def _crear_sesion(id_usuario):
     return modelo_usuario.crear_sesion(id_usuario, dt_string)
 
 
-def _existe_usuario(email, clave):
-    usuarios = modelo_usuario.obtener_usuarios_por_email_clave(email, clave)
-    return not len(usuarios) == 0
+def obtener_usuarios():
+    return modelo_usuario.obtener_usuarios()
 
 
 def crear_usuario(idUsuario, nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble):
@@ -26,11 +28,10 @@ def crear_usuario(idUsuario, nombre, apellido, email, tipoDocumento, numeroDeDoc
 def modificar_usuario(id_usuario, datos_usuario):
     modelo_usuario.modificar_usuario(id_usuario, datos_usuario)
 
-def obtener_usuarios():
-    return modelo_usuario.obtener_usuarios()
 
 def borrar_usuario(id_usuario):
     modelo_usuario.borrar_usuario(id_usuario)
+
 
 def login(email, clave):
     if _existe_usuario(email, clave):
@@ -39,23 +40,14 @@ def login(email, clave):
     else:
         raise Exception("El usuario no existe o la clave es invalida")
 
+
 def validar_sesion(id_sesion):
     sesiones = modelo_usuario.obtener_sesion(id_sesion)
     if len(sesiones) == 0:
         return False
     elif (datetime.now() - datetime.strptime(sesiones[0]['fecha_hora'], "%d/%m/%Y %H:%M:%S")).total_seconds() > 60:
-            # Sesion expirada
+        # Sesion expirada
         return False
     else:
         return True
 
-
-
-#def crear_reclamo(idReclamo, descripcion, idInmueble, idUnidad, idUsuario, idServicio):
-    modelo_reclamo.crear_reclamo(idReclamo, descripcion, idInmueble, idUnidad, idUsuario, idServicio)
-
-#def crear_inmueble(idInmueble, nombreInmueble, direccion, cantidadUnidades, servicios, identificadorCocheras, actas, unidadesActivas, listaAmenities):
-    modelo_inmueble.crear_inmueble(idInmueble, nombreInmueble, direccion, cantidadUnidades, servicios, identificadorCocheras, actas, unidadesActivas, listaAmenities)
-
-#def crear_unidades(idUnidad, numeroUnidad, usuariosUnidad, gastosUnidad, idInmueble):
-    modelo_unidades.crear_unidades(idUnidad, numeroUnidad, usuariosUnidad, gastosUnidad, idInmueble)

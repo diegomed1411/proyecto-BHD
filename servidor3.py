@@ -81,6 +81,15 @@ def crear_reclamo():
       return "el usuario ya existe", 412
     return 'OK', 200
 
+"""
+@app.route('/reclamo/<id_reclamo>', methods=['PUT'])
+def modificar_reclamo(idReclamo):
+    datos_reclamo = request.get_json()
+    if 'id_reclamo' not in datos_reclamo or datos_reclamo['idReclamo'] == '':
+        return 'El id de reclamo es requerido', 412
+    autenticacion.modificar_reclamo(idReclamo, datos_reclamo)
+    return 'OK', 200
+"""
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -95,56 +104,8 @@ def login():
     except Exception:
         return 'USUARIO NO ENCONTRADO', 404
 
-"""
-@app.route('/reclamo/<id_reclamo>', methods=['PUT'])
-def modificar_reclamo(idReclamo):
-    datos_reclamo = request.get_json()
-    if 'id_reclamo' not in datos_reclamo or datos_reclamo['idReclamo'] == '':
-        return 'El id de reclamo es requerido', 412
-    autenticacion.modificar_reclamo(idReclamo, datos_reclamo)
-    return 'OK', 200
-"""
-
-"""
-@app.route('/inmueble',methods=['POST'])
-def crear_inmueble():
-    datos_inmueble = request.get_json()
-    if 'idInmueble' not in datos_inmueble:
-        return 'idInmueble requerido', 412
-    if 'nombreInmueble' not in datos_inmueble:
-        return 'nombreInmueble requerido', 412
-    if 'direccion' not in datos_inmueble:
-        return 'direccion requerida', 412
-    if 'cantidadUnidades' not in datos_inmueble:
-        return 'cantidad de unidades requerida', 412
-    if 'servicios' not in datos_inmueble:
-        return 'servicios requerido', 412
-    if 'identificadorCocheras' not in datos_inmueble:
-        return 'identificador cocheras requerido', 412
-    if 'unidadesActivas' not in datos_inmueble:
-        return 'unidades activas requeridas', 412
-    if 'listaAmenities' not in datos_inmueble:
-        return 'lista amenities requerida', 412
-    autenticacion.crear_inmueble(datos_inmueble['idInmueble'],datos_inmueble['nombreInmueble'],datos_inmueble['direccion'],datos_inmueble['cantidadUnidades'], datos_inmueble['servicios'], datos_inmueble['identificadorCocheras'], datos_inmueble['unidadesActivas'], datos_inmueble['listaAmenities'])
-    return 'OK', 200
 
 
-@app.route('/unidades', methods=['POST'])
-def crear_unidades():
-    datos_unidades = request.get_json()
-    if 'idUnidad' not in datos_unidades:
-        return 'Id unidad requerido', 412
-    if 'numeroUnidad' not in datos_unidades:
-        return 'numero de unidad requerido', 412
-    if 'usuariosUnidad' not in datos_unidades:
-        return 'usuario de la unidad requerido', 412
-    if 'gastosUnidad' not in datos_unidades:
-        return 'gastos requeridos', 412
-    if 'idInmueble' not in datos_unidades:
-        return 'id inmueble requerido', 412
-    autenticacion.crear_unidades(datos_unidades['idUnidad'], datos_unidades['numeroUnidad'], datos_unidades['usuariosUnidad'], datos_unidades['gastosUnidad'], datos_unidades['idInmueble'])
-    return 'OK', 200
-"""
 
 if __name__ == '__main__':
     app.debug = True
