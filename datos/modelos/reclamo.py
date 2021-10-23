@@ -14,9 +14,10 @@ def crear_reclamo(idReclamo, descripcion, idInmueble, idUnidad, idUsuario, idSer
 
 
 def modificar_reclamo(idReclamo, datosReclamo):
+    #fechaModificado = datetime.now()
     modificar_reclamo_sql = f"""
         UPDATE RECLAMOS
-        SET DESCRIPCION='{datosReclamo["Problema Solucionado"]}',
+        SET DESCRIPCION='{datosReclamo["descripcion"]}', FECHA = '{datosReclamo['{datosReclamo["descripcion"]}']}', ESTADO = '{datosReclamo["estado"]}'
         WHERE ID_RECLAMO='{idReclamo}'
     """
 

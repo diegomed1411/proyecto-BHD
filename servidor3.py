@@ -89,21 +89,23 @@ def crear_reclamo():
     #    return 'se debe indicar la fecha', 412
     #if 'estado' not in datos_reclamo:
     #    return 'se debe indicar el estado', 412
-    #try:
-    reclamos.crear_reclamo(datos_reclamo['idReclamo'], datos_reclamo['descripcion'], datos_reclamo['idInmueble'], datos_reclamo['idUnidad'], datos_reclamo['idUsuario'], datos_reclamo['idServicio'])
-    #except Exception:
-    #  return "el reclamo ya existe", 412
+    try:
+        reclamos.crear_reclamo(datos_reclamo['idReclamo'], datos_reclamo['descripcion'], datos_reclamo['idInmueble'], datos_reclamo['idUnidad'], datos_reclamo['idUsuario'], datos_reclamo['idServicio'])
+    except Exception:
+      return "el reclamo ya existe", 412
     return 'OK', 200
 
-"""
+
 @app.route('/reclamo/<id_reclamo>', methods=['PUT'])
-def modificar_reclamo(idReclamo):
+def modificar_reclamo(id_reclamo):
+    #identificador = id_reclamo
     datos_reclamo = request.get_json()
-    if 'id_reclamo' not in datos_reclamo or datos_reclamo['idReclamo'] == '':
-        return 'El id de reclamo es requerido', 412
-    autenticacion.modificar_reclamo(idReclamo, datos_reclamo)
+    #if identificador  not in datos_reclamo or datos_reclamo['id_reclamo'] == '':
+    #    return 'Reclamo no encontrado', 412
+    reclamos.modificar_reclamo(id_reclamo, datos_reclamo)
     return 'OK', 200
-"""
+
+
 
 @app.route('/login', methods=['POST'])
 def login():
