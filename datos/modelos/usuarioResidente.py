@@ -19,13 +19,12 @@ def modificar_usuario(id_usuario, datos_usuario):
     bd = BaseDeDatos()
     bd.ejecutar_sql(modificar_usuario_sql)
 
-
-
-
+#-------------------------------------------------
+# ---- FUNCION PARA LISTAR TODOS LOS USUARIOS ----
 
 def obtener_usuarios():
     obtener_usuarios_sql = f"""
-        SELECT id, nombre, apellido, email, tipoDeDocumento, nuemeroDeDocumento, telefono, idunidad, idinmueble  
+        SELECT ID_USUARIO, NOMBRE, APELLIDO, EMAIL, TIPO_DE_DOCUMENTO, NUMERO_DE_DOCUMENTO, TELEFONO, ID_UNIDAD, ID_INMUEBLE  
         FROM USUARIOS_RESIDENTES
     """
     bd = BaseDeDatos()
@@ -36,8 +35,29 @@ def obtener_usuarios():
              "tipoDeDocumento": registro[4],
              "nuemeroDeDocumento": registro[5],
              "telefono": registro[6],
-             "idunidad": registro[8],
-             "idinmueble": registro[9]
+             "idunidad": registro[7],
+             "idinmueble": registro[8]
+             } for registro in bd.ejecutar_sql(obtener_usuarios_sql)]
+
+#-------------------------------------------------
+# ---- FUNCION PARA LISTAR USUARIO INDIVIDUAL SEGUN ID ----
+
+def obtener_usuario(id_usuario):
+    obtener_usuarios_sql = f"""
+        SELECT ID_USUARIO, NOMBRE, APELLIDO, EMAIL, TIPO_DE_DOCUMENTO, NUMERO_DE_DOCUMENTO, TELEFONO, ID_UNIDAD, ID_INMUEBLE  
+        FROM USUARIOS_RESIDENTES
+        WHERE ID_USUARIO = '{id_usuario}'
+    """
+    bd = BaseDeDatos()
+    return [{"id": registro[0],
+             "nombre": registro[1],
+             "apellido": registro[2],
+             "email": registro[3],
+             "tipoDeDocumento": registro[4],
+             "nuemeroDeDocumento": registro[5],
+             "telefono": registro[6],
+             "idunidad": registro[7],
+             "idinmueble": registro[8]
              } for registro in bd.ejecutar_sql(obtener_usuarios_sql)]
 
 
@@ -46,7 +66,7 @@ def borrar_usuario(id_usuario):
     obtener_usuarios_sql = f"""
         DELETE
         FROM USUARIOS_RESIDENTES
-        WHERE ID_USUARIO = {id_usuario}
+        WHERE ID_USUARIO = '{id_usuario}'
     """
     bd = BaseDeDatos()
     bd.ejecutar_sql(obtener_usuarios_sql)
@@ -84,7 +104,7 @@ def obtener_sesion(id_sesion):
     obtener_sesion_sql = f"""
         SELECT ID, ID_USUARIO, FECHA_HORA 
         FROM SESIONES 
-        WHERE ID = {id_sesion}
+        WHERE ID = '{id_sesion}'
     """
     bd = BaseDeDatos()
     return [{"id": registro[0],

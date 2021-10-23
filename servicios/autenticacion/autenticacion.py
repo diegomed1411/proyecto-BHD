@@ -16,9 +16,17 @@ def _crear_sesion(id_usuario):
     dt_string = hora_actual.strftime("%d/%m/%Y %H:%M:%S")
     return modelo_usuario.crear_sesion(id_usuario, dt_string)
 
-
+# ------------------  listar todos los usuarios ---------------
 def obtener_usuarios():
     return modelo_usuario.obtener_usuarios()
+
+# ------------------  listar un usuario segun id ---------------
+def obtener_usuario(id_usuario):
+    usuarios = modelo_usuario.obtener_usuario(id_usuario)
+    if len(usuarios) == 0:
+        raise Exception("El usuario no existe")
+    return usuarios[0]
+
 
 
 def crear_usuario(idUsuario, nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble):

@@ -1,8 +1,14 @@
 from flask import Flask, request, jsonify
 from servicios.autenticacion import autenticacion
 from servicios.reclamos import reclamos
+from flask import render_template
 
 app = Flask(__name__)
+
+@app.route('/')
+def get_index():
+    titulo_proyecto = 'BHD SOLUTIONS'
+    return render_template('login.html', titulo=titulo_proyecto)
 
 @app.route('/usuarioResidente',methods=['POST'])
 def crear_usuario():
@@ -37,8 +43,8 @@ def crear_usuario():
 @app.route('/usuarioResidente/<id_usuario>', methods=['PUT'])
 def modificar_usuario(id_usuario):
     datos_usuario = request.get_json()
-    if 'nombre' not in datos_usuario or datos_usuario['nombre'] == '':
-        return 'El nombre de usuario es requerido', 412
+    if 'email' not in datos_usuario or datos_usuario['email'] == '':
+        return 'El email de usuario es requerido', 412
     if 'clave' not in datos_usuario:
         return 'La clave es requerida', 412
     autenticacion.modificar_usuario(id_usuario, datos_usuario)
@@ -48,6 +54,14 @@ def modificar_usuario(id_usuario):
 @app.route('/usuarioResidente', methods=['GET'])
 def obtener_usuarios():
     return jsonify(autenticacion.obtener_usuarios())
+
+@app.route('/usuarioResidente/<id_usuario>', methods=['GET'])
+def obtener_usuario(id_usuario):
+    usuario = autenticacion.obtener_usuario(id_usuario)
+    return jsonify(usuario)
+
+
+
 
 
 @app.route('/usuarioResidente/<id_usuario>', methods=['DELETE'])
@@ -71,14 +85,14 @@ def crear_reclamo():
         return 'se debe especificar el usuario', 412
     if 'idServicio' not in datos_reclamo:
         return 'se debe indicar el identificador de servicio', 412
-    if 'fecha' not in datos_reclamo:
-        return 'se debe indicar la fecha', 412
+    #if 'fecha' not in datos_reclamo:
+    #    return 'se debe indicar la fecha', 412
     #if 'estado' not in datos_reclamo:
     #    return 'se debe indicar el estado', 412
-    try:
-        reclamos.crear_reclamo(datos_reclamo['idReclamo'], datos_reclamo['descripcion'], datos_reclamo['idInmueble'], datos_reclamo['idUnidad'], datos_reclamo['idUsuario'], datos_reclamo['idServicio'], datos_reclamo['fecha'])
-    except Exception:
-      return "el usuario ya existe", 412
+    #try:
+    reclamos.crear_reclamo(datos_reclamo['idReclamo'], datos_reclamo['descripcion'], datos_reclamo['idInmueble'], datos_reclamo['idUnidad'], datos_reclamo['idUsuario'], datos_reclamo['idServicio'])
+    #except Exception:
+    #  return "el reclamo ya existe", 412
     return 'OK', 200
 
 """
