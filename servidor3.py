@@ -60,10 +60,6 @@ def obtener_usuario(id_usuario):
     usuario = autenticacion.obtener_usuario(id_usuario)
     return jsonify(usuario)
 
-
-
-
-
 @app.route('/usuarioResidente/<id_usuario>', methods=['DELETE'])
 def borrar_usuario(id_usuario):
     autenticacion.borrar_usuario(id_usuario)
@@ -98,12 +94,25 @@ def crear_reclamo():
 
 @app.route('/reclamo/<id_reclamo>', methods=['PUT'])
 def modificar_reclamo(id_reclamo):
-    #identificador = id_reclamo
     datos_reclamo = request.get_json()
-    #if identificador  not in datos_reclamo or datos_reclamo['id_reclamo'] == '':
-    #    return 'Reclamo no encontrado', 412
     reclamos.modificar_reclamo(id_reclamo, datos_reclamo)
     return 'OK', 200
+
+# ---- llamado a listado de reclamos -----
+@app.route('/reclamo', methods=['GET'])
+def obtener_reclamos():
+    return jsonify(reclamos.obtener_reclamos())
+
+#---- llamado a reclamo segun id -----
+@app.route('/reclamo/<id_reclamo>', methods=['GET'])
+def obtener_reclamo(id_reclamo):
+    reclamo = reclamos.obtener_reclamo(id_reclamo)
+    return jsonify(reclamo)
+
+@app.route('/reclamo/<id_reclamo>', methods=['DELETE'])
+def borrar_reclamo(id_reclamo):
+    reclamos.borrar_reclamo(id_reclamo)
+    return "Borrado", 200
 
 
 
@@ -119,8 +128,6 @@ def login():
         return jsonify({"id_sesion": id_sesion})
     except Exception:
         return 'USUARIO NO ENCONTRADO', 404
-
-
 
 
 if __name__ == '__main__':
