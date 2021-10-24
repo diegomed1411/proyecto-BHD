@@ -8,6 +8,7 @@
 #contenedorPadre{
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100vw;
     background-image: url('../img/city-g0734409a1_1280.jpg');
@@ -19,7 +20,7 @@
 #contenedorHijo{
     width: 1000px;
     height: 900px;
-    margin: 35px;
+    margin: 15px;
     background-color: #8AB6D6;
 
 }
