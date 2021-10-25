@@ -11,7 +11,7 @@ def index():
 def login():
     error = None
     if request.method == 'POST':
-        if not autenticacion.validar_credenciales(request.form['login'], request.form['password']):
+        if not autenticacion.validar_credenciales(request.form['email'], request.form['clave']):
             error = 'Credenciales inválidas'
         else:
             return redirect(url_for('inicio'))

@@ -2,11 +2,9 @@ import requests
 
 from web.servicios import rest_api
 
-def validar_credenciales(usuario, clave):
-    body: {
-        "email": usuario,
-        "clave": clave
-    }
+def validar_credenciales(email, clave):
+    body= {"email": email,
+        "clave": clave}
     respuesta = requests.post(f'{rest_api.API_URL}/login', json=body)
     return respuesta.status_code == 200
 
