@@ -21,8 +21,8 @@ def obtener_usuarios():
     return modelo_usuario.obtener_usuarios()
 
 # ------------------  listar un usuario segun id ---------------
-def obtener_usuario(id_usuario):
-    usuarios = modelo_usuario.obtener_usuario(id_usuario)
+def obtener_usuario(email):
+    usuarios = modelo_usuario.obtener_usuario(email)
     if len(usuarios) == 0:
         raise Exception("El usuario no existe")
     return usuarios[0]

@@ -123,11 +123,12 @@ def login():
         return 'El email es requerido', 412
     if 'clave' not in datos_usuario:
         return 'La clave es requerida', 412
-    try:
+    #try:
+    else:
         id_sesion = autenticacion.login(datos_usuario['email'], datos_usuario['clave'])
         return jsonify({"id_sesion": id_sesion})
-    except Exception:
-        return 'USUARIO NO ENCONTRADO', 404
+    #except Exception:
+    #    return 'USUARIO NO ENCONTRADO', 404
 
 
 if __name__ == '__main__':

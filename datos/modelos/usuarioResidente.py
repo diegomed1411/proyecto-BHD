@@ -74,7 +74,7 @@ def borrar_usuario(id_usuario):
 
 def obtener_usuarios_por_email_clave(email, clave):
     obtener_usuario_sql = f"""
-        SELECT id, nombre, apellido, email, tipoDeDocumento, nuemeroDeDocumento, telefono, idunidad, idinmueble  
+        SELECT ID_USUARIO, NOMBRE, APELLIDO, EMAIL, TIPO_DE_DOCUMENTO, NUMERO_DE_DOCUMENTO, TELEFONO, CLAVE, ID_UNIDAD, ID_INMUEBLE
         FROM USUARIOS_RESIDENTES 
         WHERE EMAIL = '{email}' and CLAVE = '{clave}'
     """
