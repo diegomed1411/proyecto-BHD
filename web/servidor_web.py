@@ -21,7 +21,7 @@ def login():
 def registro():
     error = None
     if request.method == 'POST':
-        if not autenticacion.crear_usuario(request.form['login'], request.form['password']):
+        if not autenticacion.crear_usuario(request.form['nombre'], request.form['apellido'], request.form['email'], request.form['Tipo_de_documento'], request.form['numeroDoc'], request.form['telefono'],request.form['clave'],  request.form['idUnidad'], request.form['idInmueble'] ):
             error = 'No se pudo crear el usuario'
         else:
             return redirect(url_for('inicio'))

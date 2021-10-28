@@ -8,9 +8,8 @@ def validar_credenciales(email, clave):
     respuesta = requests.post(f'{rest_api.API_URL}/login', json=body)
     return respuesta.status_code == 200
 
-def crear_usuario(id, nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave):
+def crear_usuario(nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble):
     body={
-        "idUsuario": id,
         "nombre": nombre,
         "apellido": apellido,
         "email": email,
@@ -18,8 +17,8 @@ def crear_usuario(id, nombre, apellido, email, tipoDocumento, numeroDeDocumento,
         "numeroDeDocumento": numeroDeDocumento,
         "telefono": telefono,
         "clave": clave,
-        "idUnidad": "EDA123A103",
-        "idInmueble": "EDA123MVDUY"
+        "idUnidad": idUnidad,
+        "idInmueble": idInmueble
     }
     respuesta = requests.post(f'{rest_api.API_URL}/usuarioResidente', json=body)
     return respuesta.status_code==200

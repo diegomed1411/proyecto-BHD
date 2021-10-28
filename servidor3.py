@@ -13,8 +13,8 @@ def get_index():
 @app.route('/usuarioResidente',methods=['POST'])
 def crear_usuario():
     datos_usuario = request.get_json()
-    if 'idUsuario' not in datos_usuario:
-        return 'El identificador de usuario es requerido', 412
+    #if 'idUsuario' not in datos_usuario:
+    #    return 'El identificador de usuario es requerido', 412
     if 'nombre' not in datos_usuario:
         return 'El nombre es requerido', 412
     if 'apellido' not in datos_usuario:
@@ -34,7 +34,7 @@ def crear_usuario():
     if 'idInmueble' not in datos_usuario:
         return 'El inmueble es requerido', 412
     try:
-        autenticacion.crear_usuario(datos_usuario['idUsuario'], datos_usuario['nombre'], datos_usuario['apellido'], datos_usuario['email'], datos_usuario['tipoDocumento'], datos_usuario['numeroDeDocumento'], datos_usuario['telefono'], datos_usuario['clave'], datos_usuario['idUnidad'], datos_usuario['idInmueble'])
+        autenticacion.crear_usuario(datos_usuario['nombre'], datos_usuario['apellido'], datos_usuario['email'], datos_usuario['tipoDocumento'], datos_usuario['numeroDeDocumento'], datos_usuario['telefono'], datos_usuario['clave'], datos_usuario['idUnidad'], datos_usuario['idInmueble'])
     except Exception:
         return 'El usuario ya existe', 412
     return 'OK', 200

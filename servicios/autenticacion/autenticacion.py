@@ -29,8 +29,8 @@ def obtener_usuario(email):
 
 
 
-def crear_usuario(idUsuario, nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble):
-    modelo_usuario.crear_usuario(idUsuario, nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble)
+def crear_usuario( nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble):
+    modelo_usuario.crear_usuario( nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble)
 
 
 def modificar_usuario(id_usuario, datos_usuario):

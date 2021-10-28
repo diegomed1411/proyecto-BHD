@@ -1,10 +1,10 @@
 from datos.base_de_datos import BaseDeDatos
 
 
-def crear_usuario(idUsuario, nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble):
+def crear_usuario( nombre, apellido, email, tipoDocumento, numeroDeDocumento, telefono, clave, idUnidad, idInmueble):
     crear_usuario_sql = f"""
-        INSERT INTO USUARIOS_RESIDENTES(ID_USUARIO, NOMBRE, APELLIDO, EMAIL, TIPO_DE_DOCUMENTO, NUMERO_DE_DOCUMENTO, TELEFONO, CLAVE, ID_UNIDAD, ID_INMUEBLE)
-        VALUES ('{idUsuario}','{nombre}','{apellido}','{email}','{tipoDocumento}', '{numeroDeDocumento}', '{telefono}', '{clave}', '{idUnidad}', '{idInmueble}')
+        INSERT INTO USUARIOS_RESIDENTES( NOMBRE, APELLIDO, EMAIL, TIPO_DE_DOCUMENTO, NUMERO_DE_DOCUMENTO, TELEFONO, CLAVE, ID_UNIDAD, ID_INMUEBLE)
+        VALUES ('{nombre}','{apellido}','{email}','{tipoDocumento}', '{numeroDeDocumento}', '{telefono}', '{clave}', '{idUnidad}', '{idInmueble}')
     """
     bd = BaseDeDatos()
     bd.ejecutar_sql(crear_usuario_sql)
