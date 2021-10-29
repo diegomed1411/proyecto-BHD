@@ -57,8 +57,12 @@ def obtener_usuarios():
 
 @app.route('/usuarioResidente/<id_usuario>', methods=['GET'])
 def obtener_usuario(id_usuario):
-    usuario = autenticacion.obtener_usuario(id_usuario)
-    return jsonify(usuario)
+    try:
+        usuario = autenticacion.obtener_usuario(id_usuario)
+        return jsonify(usuario)
+    except Exception:
+        return 'usuario no encontrado', 404
+
 
 @app.route('/usuarioResidente/<id_usuario>', methods=['DELETE'])
 def borrar_usuario(id_usuario):

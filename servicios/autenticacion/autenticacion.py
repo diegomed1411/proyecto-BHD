@@ -59,3 +59,5 @@ def validar_sesion(id_sesion):
     else:
         return True
 
+
+
