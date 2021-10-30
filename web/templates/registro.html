@@ -26,19 +26,19 @@
             <form action="" method="post">
               <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" aria-describedby="nombre" value="{{request.form.nombre}}" name="nombre">
+                <input type="text" class="form-control" id="nombre" aria-describedby="nombre" value="{{request.form.nombre}}" name="nombre" required>
               </div>
               <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="apellido" aria-describedby="apellido" value="{{request.form.apellido}}" name="apellido">
+                <input type="text" class="form-control" id="apellido" aria-describedby="apellido" value="{{request.form.apellido}}" name="apellido" required>
               </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" aria-describedby="email" value="{{request.form.email}}" name="email">
+                  <input type="email" class="form-control" id="email" aria-describedby="email" value="{{request.form.email}}" name="email" required>
                 </div>
                 <div class="mb-3">
                 <label for="Tipo_de_documento" class="form-label">Tipo de documento</label>
-                <select class="form-select" aria-label="Tipo de documento" id="Tipo_de_documento" value="{{request.form.Tipo_de_documento}}" name="Tipo_de_documento">
+                <select class="form-select" aria-label="Tipo de documento" id="Tipo_de_documento" value="{{request.form.Tipo_de_documento}}" name="Tipo_de_documento" required>
                   <option selected>Seleccione tipo de documento</option>
                   <option value="cedula">Cedula</option>
                   <option value="pasaporte">Pasaporte</option>
@@ -46,26 +46,26 @@
                   </div>
                 <div class="mb-3">
                   <label for="numeroDoc" class="form-label">Numero de Documento</label>
-                  <input type="text" class="form-control" id="numeroDoc" aria-describedby="emailHelp" value="{{request.form.numeroDoc}}" name="numeroDoc">
+                  <input type="text" class="form-control" id="numeroDoc" aria-describedby="emailHelp" value="{{request.form.numeroDoc}}" name="numeroDoc" required>
                 </div>
               <div class="mb-3">
                   <label for="telefono" class="form-label">Telefono</label>
-                  <input type="text" class="form-control" id="telefono" aria-describedby="emailHelp" value="{{request.form.telefono}}" name="telefono">
+                  <input type="text" class="form-control" id="telefono" aria-describedby="emailHelp" value="{{request.form.telefono}}" name="telefono" required>
                 </div>
                 <div class="mb-3">
                   <label for="clave" class="form-label">Contraseña</label>
-                  <input type="password" class="form-control" id="clave" aria-describedby="clave" value="{{request.form.clave}}" name="clave">
+                  <input type="password" class="form-control" id="clave" aria-describedby="clave" value="{{request.form.clave}}" name="clave" required>
                 </div>
                   <div class="mb-3">
                     <label for="idUnidad" class="form-label">Unidad</label>
-                    <select class="form-select" aria-label="Tipo de documento" id="idUnidad" value="{{request.form.idUnidad}}" name="idUnidad">
+                    <select class="form-select" aria-label="Tipo de documento" id="idUnidad" value="{{request.form.idUnidad}}" name="idUnidad" required>
                       <option selected>Seleccione unidad</option>
                       <option value="EDA123A103">A103</option>
                     </select>
                     </div>
                 <div class="mb-3">
                   <label for="idInmueble" class="form-label">Inmueble</label>
-                  <select class="form-select" aria-label="Nombre de Inmueble" id="idInmueble" value="{{request.form.idInmueble}}" name="idInmueble">
+                  <select class="form-select" aria-label="Nombre de Inmueble" id="idInmueble" value="{{request.form.idInmueble}}" name="idInmueble" required>
                     <option selected>Seleccione inmueble</option>
                     <option value="EDA123MVDUY">Edificio A</option>
                   </select>
