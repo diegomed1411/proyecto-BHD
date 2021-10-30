@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, url_for, render_template
 from web.servicios import autenticacion, serv_unidades, serv_reclamos
-from flask import session
+from flask import session, flash
 
 
 app= Flask(__name__)
@@ -32,7 +32,7 @@ def registro():
             return redirect(url_for('inicio'))
     return render_template('registro.html', error=error)
 
-@app.route('/inicio')
+@app.route('/inicio', methods= ['GET', 'POST', 'PUT'])
 def inicio():
     error = None
     email = request.args['email']
@@ -40,9 +40,14 @@ def inicio():
     unidades = serv_unidades.obtener_unidades()
     reclamos = serv_reclamos.obtener_reclamos()
     if request.method == 'POST':
-        serv_reclamos.crear_reclamo()
-        return redirect(url_for('inicio'))
-    return render_template('inicio.html', usuarios=usuarios, email=email, unidades= unidades, reclamos= reclamos)
+        if not serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario']) :
+            error = 'Debe indicar la descripcion del reclamo'
+        else:
+            flash('Reclamo creado correctamente')
+            serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario'])
+            return redirect(url_for('inicio', email= email,  error=error))
+    if request.method == 'PUT':
+    return render_template('inicio.html', usuarios=usuarios, email=email, unidades= unidades, reclamos= reclamos, error=error)
 
 app.secret_key='hola'
 if __name__ == '__main__':

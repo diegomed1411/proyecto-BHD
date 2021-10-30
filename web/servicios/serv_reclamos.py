@@ -1,5 +1,4 @@
 import requests
-from datetime import datetime
 from web.servicios import rest_api
 
 def obtener_reclamos():
@@ -8,17 +7,13 @@ def obtener_reclamos():
 
 
 
-def crear_reclamo (id_reclamo, descripcion):
+def crear_reclamo ( descripcion, id_servicio ,id_usuario):
     body = {
-        "id_reclamo": id_reclamo,
         "descripcion": descripcion,
-        "id_inmueble": "EDA123MVDUY",
-        "tipoDocumento": tipoDocumento,
-        "numeroDeDocumento": numeroDeDocumento,
-        "telefono": telefono,
-        "clave": clave,
-        "idUnidad": idUnidad,
-        "idInmueble": idInmueble
+        "idInmueble": "EDA123MVDUY",
+        "idUnidad": "EDA123A103",
+        "idUsuario": id_usuario,
+        "idServicio": id_servicio
     }
-    respuesta = requests.post(f'{rest_api.API_URL}/usuarioResidente', json=body)
+    respuesta = requests.post(f'{rest_api.API_URL}/reclamo', json=body)
     return respuesta.status_code == 200

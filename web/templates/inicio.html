@@ -60,7 +60,7 @@
                   <h5 class="card-title">Electricista</h5>
                   <p class="card-text">Crear nuevo reclamo para reparacion eléctrica</p>
                   <div class="mb-3">
-                    <textarea class="form-control" id="textAreaElectricista" rows="3" name="descripcion"></textarea>
+                    <textarea class="form-control" id="textAreaElectricista" rows="3" name="descripcion" required></textarea>
                     </div>
                   <input type="checkbox" name="id_servicio" value="ELEC100" checked> Soy responsable de la veracidad del reclamo<br>
                     <input class= "boxOculto" type="checkbox" name="id_usuario" value="
@@ -73,35 +73,105 @@
 
                   <button type="submit" class="btn btn-primary">Crear Reclamo</button>
                 </form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+    {% for message in messages %}
+
+                    <p>{{ message }}</p>
+
+
+        {% endfor %}
+
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+                  {% if error %}
+              <p><strong>{{error}}</strong></p>
+              {% endif %}
                 </div>
               </div>
 
-              <div class="card" style="width: 18rem;">
-                <img src="static/img/sanitario.jpg" class="card-img-top" alt="sanitario">
-                <div class="card-body">
+
+
+                              <div class="card" style="width: 18rem;">
+                <img src="static/img/sanitario.jpg" class="card-img-top" alt="sanitario">                <div class="card-body">
                   <form action="" method="post">
                   <h5 class="card-title">Sanitario</h5>
                   <p class="card-text">Crear nuevo reclamo para reparaciones generales, obstrucciones en areas comunes y tanques</p>
-                    <div class="mb-3">
-                    <textarea class="form-control" id="textAreaSanitario" rows="3"></textarea>
+                  <div class="mb-3">
+                    <textarea class="form-control" id="textAreaSanitario" rows="3" name="descripcion" required></textarea>
                     </div>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Sanitario">Nuevo Reclamo</button>
-                </form>
-                </div>
+                  <input type="checkbox" name="id_servicio" value="SANI300" checked> Soy responsable de la veracidad del reclamo<br>
+                    <input class= "boxOculto" type="checkbox" name="id_usuario" value="
+                    {% for usuario in usuarios %}
+                      {% if email == usuario['email'] %}
+                   {{usuario['id']}}
+                    {% endif %}
+                    {% endfor %}"
+                           checked>
 
+                  <button type="submit" class="btn btn-primary">Crear Reclamo</button>
+                </form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+    {% for message in messages %}
+
+                    <p>{{ message }}</p>
+
+
+        {% endfor %}
+
+  {% endif %}
+{% endwith %}
+{% block body2 %}{% endblock %}
+
+                  {% if error %}
+              <p><strong>{{error}}</strong></p>
+              {% endif %}
+                </div>
               </div>
 
-              <div class="card" style="width: 18rem;">
+
+                                             <div class="card" style="width: 18rem;">
                 <img src="static/img/jardinero.png" class="card-img-top" alt="jardinero">
-                <div class="card-body">
+                                                 <div class="card-body">
                   <form action="" method="post">
                   <h5 class="card-title">Jardinero</h5>
                   <p class="card-text">Crear nuevo reclamo ante caida de ramas, limpieza de jardines y afines</p>
                   <div class="mb-3">
-                    <textarea class="form-control" id="textAreaJardinero" rows="3"></textarea>
-                  </div>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Jardinero">Nuevo Reclamo</button>
+                    <textarea class="form-control" id="textAreaJardinero" rows="3" name="descripcion" required></textarea>
+                    </div>
+                  <input type="checkbox" name="id_servicio" value="JARD200" checked> Soy responsable de la veracidad del reclamo<br>
+                    <input class= "boxOculto" type="checkbox" name="id_usuario" value="
+                    {% for usuario in usuarios %}
+                      {% if email == usuario['email'] %}
+                   {{usuario['id']}}
+                    {% endif %}
+                    {% endfor %}"
+                           checked>
+
+                  <button type="submit" class="btn btn-primary">Crear Reclamo</button>
                 </form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+    {% for message in messages %}
+
+                    <p>{{ message }}</p>
+
+
+        {% endfor %}
+
+  {% endif %}
+{% endwith %}
+{% block body3 %}{% endblock %}
+
+                  {% if error %}
+              <p><strong>{{error}}</strong></p>
+              {% endif %}
                 </div>
               </div>
 
@@ -127,8 +197,30 @@
             </button>
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-            {{reclamos}}
+<div class="accordion-body">
+
+              <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">id_servicio</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for reclamo in reclamos %}
+      <tr>
+      <th scope="row">{{reclamo['id']}}</th>
+      <td>{{reclamo['descripcion']}}</td>
+      <td>{{reclamo['id_servicio']}}</td>
+      <td>{{reclamo['estado']}}</td>
+      </tr>
+    </tbody>
+  {% endfor %}
+</table>
+
             </div>
           </div>
         </div>
@@ -176,6 +268,7 @@
         </div>
       </div>
     </main>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

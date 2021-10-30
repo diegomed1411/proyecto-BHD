@@ -1,11 +1,11 @@
 from datos.base_de_datos import BaseDeDatos
 from datetime import datetime
 
-def crear_reclamo(idReclamo, descripcion, idInmueble, idUnidad, idUsuario, idServicio):
+def crear_reclamo(descripcion, idInmueble, idUnidad, idUsuario, idServicio):
     ahora = datetime.now()
     crear_reclamo_sql = f"""
-    INSERT INTO RECLAMOS(ID_RECLAMO, DESCRIPCION, ID_INMUEBLE, ID_UNIDAD, ID_USUARIO, ID_SERVICIO, FECHA, ESTADO)
-    VALUES('{idReclamo}', '{descripcion}', '{idInmueble}', '{idUnidad}', '{idUsuario}', '{idServicio}', '{ahora}', 'pendiente' )
+    INSERT INTO RECLAMOS(DESCRIPCION, ID_INMUEBLE, ID_UNIDAD, ID_USUARIO, ID_SERVICIO, FECHA, ESTADO)
+    VALUES('{descripcion}', '{idInmueble}', '{idUnidad}', '{idUsuario}', '{idServicio}', '{ahora}', 'pendiente' )
     """
 
     bd = BaseDeDatos()

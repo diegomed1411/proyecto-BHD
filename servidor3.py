@@ -89,7 +89,7 @@ def crear_reclamo():
     #if 'estado' not in datos_reclamo:
     #    return 'se debe indicar el estado', 412
     try:
-        reclamos.crear_reclamo(datos_reclamo['idReclamo'], datos_reclamo['descripcion'], datos_reclamo['idInmueble'], datos_reclamo['idUnidad'], datos_reclamo['idUsuario'], datos_reclamo['idServicio'])
+        reclamos.crear_reclamo(datos_reclamo['descripcion'], datos_reclamo['idInmueble'], datos_reclamo['idUnidad'], datos_reclamo['idUsuario'], datos_reclamo['idServicio'])
     except Exception:
       return "el reclamo ya existe", 412
     return 'OK', 200
