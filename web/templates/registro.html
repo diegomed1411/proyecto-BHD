@@ -17,7 +17,9 @@
             <img id="icono" src="static/img/icons8-building-64 (1).png" alt="icono edificio"></a>
             <h1 class="presentacion">REGISTRO DE NUEVO USUARIO</h1>
             <p class="presentacion">Considera que la activación del usuario depende de la aceptación por parte del administrador de la propiedad <br>Nota: todos los campos de este formulario son obligatorios</p>
-
+              {% if error %}
+              <p class="alarma"><strong>Error:</strong>{{error}}</p>
+              {% endif %}
           </div>
           <div class="col columnaDerecha">
               <h2>INGRESE SUS DATOS</h2>
@@ -71,9 +73,7 @@
 
                 <button type="submit" class="btn btn-primary">Registrarse</button>
               </form>
-              {% if error %}
-              <p><strong>Error:</strong>{{error}}</p>
-              {% endif %}
+
           </div>
         </div>
       </div>

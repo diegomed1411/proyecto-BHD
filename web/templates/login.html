@@ -30,14 +30,10 @@
                   <label for="clave" class="form-label">Contraseña</label>
                   <input type="password" class="form-control" id="clave" name="clave" placeholder="Mi clave" value="{{request.form.clave}}">
                 </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Recordarme</label>
-                </div>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
               </form>
               {% if error %}
-              <p><strong>Error:</strong>{{error}}</p>
+              <p class="alarma"><strong>Error:</strong>{{error}}</p>
               {% endif %}
               <div id="formFooter">
               <p>¿No tienes cuenta?</p>

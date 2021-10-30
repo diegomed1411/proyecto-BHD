@@ -29,13 +29,25 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active m-3" href="#">Unidad: 103</a>
+                    <a class="nav-link active m-3" href="#"> Unidad:
+                        {% for usuario in usuarios %}
+                      {% if email == usuario['email'] %}
+                                {% for unidad in unidades %}
+          {% if usuario['idunidad'] == unidad['id'] : %}
+            {{unidad['numero']}}
+          {% endif %}
+        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+
+
+                    </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active m-3" href="#">Edificio A</a>
                   </li>
                 </ul>
-                <button type="button" class="btn btn-outline-primary m-3">Cerrar Sesion</button>
+                <button type="button" class="btn btn-outline-primary m-3" onclick="location.href='/'">Cerrar Sesion</button>
               </div>
             </div>
           </nav>

@@ -69,3 +69,7 @@ form{
 .boxOculto {
     display: none;
 }
+
+.alarma {
+color:red
+}

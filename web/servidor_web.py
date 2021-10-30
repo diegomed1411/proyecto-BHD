@@ -29,7 +29,7 @@ def registro():
         if not autenticacion.crear_usuario(request.form['nombre'], request.form['apellido'], request.form['email'], request.form['Tipo_de_documento'], request.form['numeroDoc'], request.form['telefono'],request.form['clave'],  request.form['idUnidad'], request.form['idInmueble'] ):
             error = 'No se pudo crear el usuario'
         else:
-            return redirect(url_for('inicio'))
+            return redirect(url_for('login'))
     return render_template('registro.html', error=error)
 
 @app.route('/inicio', methods= ['GET', 'POST', 'PUT'])
@@ -46,7 +46,6 @@ def inicio():
             flash('Reclamo creado correctamente')
             serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario'])
             return redirect(url_for('inicio', email= email,  error=error))
-    if request.method == 'PUT':
     return render_template('inicio.html', usuarios=usuarios, email=email, unidades= unidades, reclamos= reclamos, error=error)
 
 app.secret_key='hola'
