@@ -48,6 +48,7 @@ def inicio():
             return redirect(url_for('inicio', email= email,  error=error))
     return render_template('inicio.html', usuarios=usuarios, email=email, unidades= unidades, reclamos= reclamos, error=error)
 
+
 app.secret_key='hola'
 if __name__ == '__main__':
     app.debug = True

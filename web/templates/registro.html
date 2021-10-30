@@ -13,7 +13,7 @@
     <div id="contenedorHijo" class="container">
         <div class="row row-cols-2">
           <div class="col columnaIzquierda">
-            <a href="./index.html">
+            <a href="./">
             <img id="icono" src="static/img/icons8-building-64 (1).png" alt="icono edificio"></a>
             <h1 class="presentacion">REGISTRO DE NUEVO USUARIO</h1>
             <p class="presentacion">Considera que la activación del usuario depende de la aceptación por parte del administrador de la propiedad <br>Nota: todos los campos de este formulario son obligatorios</p>
@@ -39,7 +39,7 @@
                 <div class="mb-3">
                 <label for="Tipo_de_documento" class="form-label">Tipo de documento</label>
                 <select class="form-select" aria-label="Tipo de documento" id="Tipo_de_documento" value="{{request.form.Tipo_de_documento}}" name="Tipo_de_documento" required>
-                  <option selected>Seleccione tipo de documento</option>
+                  <option selected value="">Seleccione tipo de documento</option>
                   <option value="cedula">Cedula</option>
                   <option value="pasaporte">Pasaporte</option>
                 </select>
@@ -59,14 +59,14 @@
                   <div class="mb-3">
                     <label for="idUnidad" class="form-label">Unidad</label>
                     <select class="form-select" aria-label="Tipo de documento" id="idUnidad" value="{{request.form.idUnidad}}" name="idUnidad" required>
-                      <option selected>Seleccione unidad</option>
+                      <option selected value="">Seleccione unidad</option>
                       <option value="EDA123A103">A103</option>
                     </select>
                     </div>
                 <div class="mb-3">
                   <label for="idInmueble" class="form-label">Inmueble</label>
                   <select class="form-select" aria-label="Nombre de Inmueble" id="idInmueble" value="{{request.form.idInmueble}}" name="idInmueble" required>
-                    <option selected>Seleccione inmueble</option>
+                    <option selected value="">Seleccione inmueble</option>
                     <option value="EDA123MVDUY">Edificio A</option>
                   </select>
                   </div>

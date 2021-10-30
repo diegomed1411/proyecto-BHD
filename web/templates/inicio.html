@@ -218,6 +218,7 @@
       <th scope="col">Descripcion</th>
       <th scope="col">id_servicio</th>
       <th scope="col">Estado</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -228,6 +229,7 @@
       <td>{{reclamo['descripcion']}}</td>
       <td>{{reclamo['id_servicio']}}</td>
       <td>{{reclamo['estado']}}</td>
+      <td><form method="delete" action="/reclamo/{{reclamo['id']}}" ><button type="submit" class="btn btn-danger" href="/inicio/{{reclamo['id']}}">Eliminar</button></form></td>
       </tr>
     </tbody>
   {% endfor %}
