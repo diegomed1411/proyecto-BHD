@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from servicios.autenticacion import autenticacion
 from servicios.reclamos import reclamos
+from servicios.unidades import unidades
 from flask import render_template
 
 app = Flask(__name__)
@@ -73,8 +74,6 @@ def borrar_usuario(id_usuario):
 @app.route('/reclamo', methods=['POST'])
 def crear_reclamo():
     datos_reclamo = request.get_json()
-    if 'idReclamo' not in datos_reclamo:
-        return 'id de reclamo requerido', 412
     if 'descripcion' not in datos_reclamo:
         return 'descripcion requerida', 412
     if 'idInmueble' not in datos_reclamo:
@@ -118,7 +117,10 @@ def borrar_reclamo(id_reclamo):
     reclamos.borrar_reclamo(id_reclamo)
     return "Borrado", 200
 
-
+#--- obtener listado de unidades
+@app.route('/unidad', methods=['GET'])
+def obtener_unidades():
+    return jsonify(unidades.obtener_unidades())
 
 @app.route('/login', methods=['POST'])
 def login():

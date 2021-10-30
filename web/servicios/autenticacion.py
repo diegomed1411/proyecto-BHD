@@ -26,3 +26,4 @@ def crear_usuario(nombre, apellido, email, tipoDocumento, numeroDeDocumento, tel
 def obtener_usuarios():
     respuesta = requests.get(f'{rest_api.API_URL}/usuarioResidente')
     return respuesta.json()
+

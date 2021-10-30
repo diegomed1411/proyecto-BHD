@@ -20,7 +20,13 @@
               <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active m-3" aria-current="page" href="#">{{encabezado}}</a>
+                    <a class="nav-link active m-3" aria-current="page" href="#">
+                      {% for usuario in usuarios %}
+                      {% if email == usuario['email'] %}
+                    Usuario: {{usuario['nombre']}} {{usuario['apellido']}}
+                    {% endif %}
+                    {% endfor %}
+                    </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active m-3" href="#">Unidad: 103</a>
@@ -54,9 +60,18 @@
                   <h5 class="card-title">Electricista</h5>
                   <p class="card-text">Crear nuevo reclamo para reparacion eléctrica</p>
                   <div class="mb-3">
-                    <textarea class="form-control" id="textAreaElectricista" rows="3"></textarea>
+                    <textarea class="form-control" id="textAreaElectricista" rows="3" name="descripcion"></textarea>
                     </div>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Electricista">Nuevo Reclamo</button>
+                  <input type="checkbox" name="id_servicio" value="ELEC100" checked> Soy responsable de la veracidad del reclamo<br>
+                    <input class= "boxOculto" type="checkbox" name="id_usuario" value="
+                    {% for usuario in usuarios %}
+                      {% if email == usuario['email'] %}
+                   {{usuario['id']}}
+                    {% endif %}
+                    {% endfor %}"
+                           checked>
+
+                  <button type="submit" class="btn btn-primary">Crear Reclamo</button>
                 </form>
                 </div>
               </div>
@@ -113,51 +128,54 @@
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            {{reclamos}}
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Listar Usuarios en el edificio
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+
+              <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Unidad</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for usuario in usuarios %}
+      <tr>
+      <th scope="row">{{usuario['id']}}</th>
+      <td>{{usuario['nombre']}}</td>
+      <td>{{usuario['apellido']}}</td>
+
+      <td>
+        {% for unidad in unidades %}
+          {% if usuario['idunidad'] == unidad['id'] : %}
+            {{unidad['numero']}}
+          {% endif %}
+        {% endfor %}
+      </td>
+      </tr>
+    </tbody>
+  {% endfor %}
+</table>
+
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    
-
-
-    
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
-    
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Send message</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
