@@ -17,7 +17,7 @@ def modificar_reclamo(idReclamo, datosReclamo):
     fechaModificado = datetime.now()
     modificar_reclamo_sql = f"""
         UPDATE RECLAMOS
-        SET DESCRIPCION='{datosReclamo["descripcion"]}', FECHA='{fechaModificado}', ESTADO='{datosReclamo["estado"]}'
+        SET FECHA='{fechaModificado}', ESTADO="completado"
         WHERE ID_RECLAMO='{idReclamo}'
     """
 

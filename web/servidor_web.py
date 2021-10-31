@@ -35,18 +35,15 @@ def registro():
 @app.route('/inicio', methods= ['GET', 'POST', 'PUT'])
 def inicio():
     error = None
+    prueba = None
     email = request.args['email']
     usuarios = autenticacion.obtener_usuarios()
     unidades = serv_unidades.obtener_unidades()
     reclamos = serv_reclamos.obtener_reclamos()
     if request.method == 'POST':
-        if not serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario']) :
-            error = 'Debe indicar la descripcion del reclamo'
-        else:
-            flash('Reclamo creado correctamente')
-            serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario'])
-            return redirect(url_for('inicio', email= email,  error=error))
-        pass
+        flash('Reclamo creado correctamente')
+        serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario'])
+        return redirect(url_for('inicio', email= email,  error=error))
     return render_template('inicio.html', usuarios=usuarios, email=email, unidades= unidades, reclamos= reclamos, error=error)
 
 @app.route('/borrarReclamo/[<int:id>, <email>]')
@@ -56,10 +53,12 @@ def borrarReclamo(id, email):
 
 @app.route('/completarReclamo/[<int:id>, <email>]')
 def completarReclamo(id, email):
-    serv_reclamos.completar_reclamo(id)
+    print(serv_reclamos.modificar_reclamo (id))
     return redirect(url_for('inicio', email= email))
 
 app.secret_key='hola'
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run(port=5002)
