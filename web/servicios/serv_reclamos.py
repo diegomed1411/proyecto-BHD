@@ -7,6 +7,7 @@ def obtener_reclamos():
 
 
 
+
 def crear_reclamo ( descripcion, id_servicio ,id_usuario):
     body = {
         "descripcion": descripcion,
@@ -19,5 +20,8 @@ def crear_reclamo ( descripcion, id_servicio ,id_usuario):
     return respuesta.status_code == 200
 
 def borrar_reclamo (id):
-    respuesta = requests.delete(f'{rest_api.API_URL}/relamo/{id}')
+    respuesta = requests.delete(f'{rest_api.API_URL}/reclamo/{id}')
     return respuesta.status_code == 200
+
+def completar_reclamo (id):
+    body

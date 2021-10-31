@@ -112,7 +112,7 @@ def obtener_reclamo(id_reclamo):
     reclamo = reclamos.obtener_reclamo(id_reclamo)
     return jsonify(reclamo)
 
-@app.route('/reclamo/<id_reclamo>', methods=['DELETE'])
+@app.route('/reclamo/<int:id_reclamo>', methods=['DELETE'])
 def borrar_reclamo(id_reclamo):
     reclamos.borrar_reclamo(id_reclamo)
     return "Borrado", 200

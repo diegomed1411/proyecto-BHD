@@ -46,8 +46,18 @@ def inicio():
             flash('Reclamo creado correctamente')
             serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario'])
             return redirect(url_for('inicio', email= email,  error=error))
+        pass
     return render_template('inicio.html', usuarios=usuarios, email=email, unidades= unidades, reclamos= reclamos, error=error)
 
+@app.route('/borrarReclamo/[<int:id>, <email>]')
+def borrarReclamo(id, email):
+    serv_reclamos.borrar_reclamo(id)
+    return redirect(url_for('inicio', email= email))
+
+@app.route('/completarReclamo/[<int:id>, <email>]')
+def completarReclamo(id, email):
+    serv_reclamos.completar_reclamo(id)
+    return redirect(url_for('inicio', email= email))
 
 app.secret_key='hola'
 if __name__ == '__main__':

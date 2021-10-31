@@ -229,7 +229,8 @@
       <td>{{reclamo['descripcion']}}</td>
       <td>{{reclamo['id_servicio']}}</td>
       <td>{{reclamo['estado']}}</td>
-      <td><form method="delete" action="/reclamo/{{reclamo['id']}}" ><button type="submit" class="btn btn-danger" href="/inicio/{{reclamo['id']}}">Eliminar</button></form></td>
+      <td><a href="/completarReclamo/[{{reclamo['id']}}, {{email}}]">Completar</a> </td>
+      <td><a href="/borrarReclamo/[{{reclamo['id']}}, {{email}}]">Eliminar</a> </td>
       </tr>
     </tbody>
   {% endfor %}
