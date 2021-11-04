@@ -36,7 +36,8 @@ def registro():
 def inicio():
     error = None
     prueba = None
-    email = request.args['email']
+    #email = request.args['email']
+    email = session['email']
     usuarios = autenticacion.obtener_usuarios()
     unidades = serv_unidades.obtener_unidades()
     reclamos = serv_reclamos.obtener_reclamos()
@@ -55,6 +56,11 @@ def borrarReclamo(id, email):
 def completarReclamo(id, email):
     print(serv_reclamos.modificar_reclamo (id))
     return redirect(url_for('inicio', email= email))
+
+@app.route('/logout')
+def logout():
+    del session['email']
+    return redirect(url_for('login'))
 
 app.secret_key='hola'
 
