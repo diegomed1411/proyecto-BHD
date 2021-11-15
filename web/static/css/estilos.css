@@ -73,3 +73,8 @@ form{
 .alarma {
 color:red
 }
+
+#mensajeReclamo {
+color: red;
+text-align: center;
+font-size: 26px}

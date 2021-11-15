@@ -63,7 +63,20 @@
             </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body d-flex justify-content-around">
+                            {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+                                  <p id="mensajeReclamo">{{ message }}</p>
+                                  {% endfor %}
+                                  {% endif %}
+{% endwith %}
+{% block body2 %}{% endblock %}
+
+                  {% if error %}
+              <p><strong>{{error}}</strong></p>
+              {% endif %}
+              <div class="accordion-body d-flex justify-content-around">
+
               <!-- incluimos las tarjetas de cada uno de los servicios -->
               <div class="card" style="width: 18rem;">
                 <img src="static/img/electricista.jpg" class="card-img-top" alt="electricista">
@@ -85,23 +98,7 @@
 
                   <button type="submit" class="btn btn-primary">Crear Reclamo</button>
                 </form>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
 
-    {% for message in messages %}
-
-                    <p>{{ message }}</p>
-
-
-        {% endfor %}
-
-  {% endif %}
-{% endwith %}
-{% block body %}{% endblock %}
-
-                  {% if error %}
-              <p><strong>{{error}}</strong></p>
-              {% endif %}
                 </div>
               </div>
 
@@ -123,26 +120,12 @@
                     {% endif %}
                     {% endfor %}"
                            checked>
-
-                  <button type="submit" class="btn btn-primary">Crear Reclamo</button>
+                  <button type="submit" class="btn btn-primary">
+                    Crear Reclamo
+                    </button>
                 </form>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-
-    {% for message in messages %}
-
-                    <p>{{ message }}</p>
 
 
-        {% endfor %}
-
-  {% endif %}
-{% endwith %}
-{% block body2 %}{% endblock %}
-
-                  {% if error %}
-              <p><strong>{{error}}</strong></p>
-              {% endif %}
                 </div>
               </div>
 
@@ -167,23 +150,7 @@
 
                   <button type="submit" class="btn btn-primary">Crear Reclamo</button>
                 </form>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
 
-    {% for message in messages %}
-
-                    <p>{{ message }}</p>
-
-
-        {% endfor %}
-
-  {% endif %}
-{% endwith %}
-{% block body3 %}{% endblock %}
-
-                  {% if error %}
-              <p><strong>{{error}}</strong></p>
-              {% endif %}
                 </div>
               </div>
 

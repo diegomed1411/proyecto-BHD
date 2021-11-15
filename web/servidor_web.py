@@ -42,8 +42,8 @@ def inicio():
     unidades = serv_unidades.obtener_unidades()
     reclamos = serv_reclamos.obtener_reclamos()
     if request.method == 'POST':
-        flash('Reclamo creado correctamente')
         serv_reclamos.crear_reclamo(request.form['descripcion'], request.form['id_servicio'], request.form['id_usuario'])
+        flash('Reclamo creado correctamente')
         return redirect(url_for('inicio', email= email,  error=error))
     return render_template('inicio.html', usuarios=usuarios, email=email, unidades= unidades, reclamos= reclamos, error=error)
 
