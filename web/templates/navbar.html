@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand m-3" href="#"><img src="static/img/icons8-building-64 (1).png" alt="icono principal"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active m-3" aria-current="page" href="#">
+                      {% for usuario in usuarios %}
+                      {% if email == usuario['email'] %}
+                    Usuario: {{usuario['nombre']}} {{usuario['apellido']}}
+                    {% endif %}
+                    {% endfor %}
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active m-3" href="#"> Unidad:
+                        {% for usuario in usuarios %}
+                      {% if email == usuario['email'] %}
+                                {% for unidad in unidades %}
+          {% if usuario['idunidad'] == unidad['id'] : %}
+            {{unidad['numero']}}
+          {% endif %}
+        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+
+
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active m-3" href="#">Edificio A</a>
+                  </li>
+                </ul>
+                <button type="button" class="btn btn-outline-primary m-3" onclick="location.href='/logout'">Cerrar Sesion</button>
+              </div>
+            </div>
+          </nav>

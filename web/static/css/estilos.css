@@ -70,11 +70,14 @@ form{
     display: none;
 }
 
-.alarma {
-color:red
-}
 
 #mensajeReclamo {
 color: red;
 text-align: center;
 font-size: 26px}
+
+.nav-link {
+margin: 20px}
+
+.tab-content{
+margin: 20px}
