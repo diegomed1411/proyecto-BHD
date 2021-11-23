@@ -18,7 +18,7 @@
     <main class="container">
         <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Crear Reclamo</button>
+    <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false">Crear Reclamo</button>
     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Gestionar Reclamos</button>
     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Listar Usuarios en el Edificio</button>
   </div>
@@ -121,7 +121,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Descripcion</th>
-      <th scope="col">id_servicio</th>
+      <th scope="col">Servicio</th>
       <th scope="col">Estado</th>
       <th scope="col"></th>
     </tr>
@@ -132,7 +132,19 @@
       <tr>
       <th scope="row">{{reclamo['id']}}</th>
       <td>{{reclamo['descripcion']}}</td>
-      <td>{{reclamo['id_servicio']}}</td>
+
+
+          {% if reclamo['id_servicio'] == "ELEC100" %}
+              <td>ELECTRICISTA</td>
+          {% elif reclamo['id_servicio'] == "SANI300" %}
+            <td>SANITARIO</td>
+          {% elif reclamo['id_servicio'] == "JARD200" %}
+            <td>JARDINERO</td>
+              {% endif %}
+
+
+
+
       <td>{{reclamo['estado']}}</td>
       <td><a href="/completarReclamo/[{{reclamo['id']}}, {{email}}]">Completar</a> </td>
       <td><a href="/borrarReclamo/[{{reclamo['id']}}, {{email}}]">Eliminar</a> </td>

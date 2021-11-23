@@ -50,12 +50,12 @@ def inicio():
 @app.route('/borrarReclamo/[<int:id>, <email>]')
 def borrarReclamo(id, email):
     serv_reclamos.borrar_reclamo(id)
-    return redirect(url_for('inicio', email= email))
+    return redirect(url_for('inicio' , email= email))
 
 @app.route('/completarReclamo/[<int:id>, <email>]')
 def completarReclamo(id, email):
     print(serv_reclamos.modificar_reclamo (id))
-    return redirect(url_for('inicio', email= email))
+    return redirect(url_for('inicio' , email= email))
 
 @app.route('/logout')
 def logout():
